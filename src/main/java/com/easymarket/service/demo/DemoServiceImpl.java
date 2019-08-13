@@ -1,4 +1,4 @@
-package com.xiaorui.smartweb.service.demo;
+package com.easymarket.service.demo;
 
 import org.springframework.stereotype.Service;
 

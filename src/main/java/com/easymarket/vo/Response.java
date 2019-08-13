@@ -1,4 +1,4 @@
-package com.xiaorui.smartweb.vo;
+package com.easymarket.vo;
 
 import lombok.Data;
 

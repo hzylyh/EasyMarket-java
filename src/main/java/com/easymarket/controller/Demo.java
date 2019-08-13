@@ -1,9 +1,8 @@
-package com.xiaorui.smartweb.controller;
+package com.easymarket.controller;
 
 
-import com.alibaba.fastjson.JSONObject;
-import com.xiaorui.smartweb.service.demo.DemoService;
-import com.xiaorui.smartweb.vo.Response;
+import com.easymarket.service.demo.DemoService;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +14,7 @@ public class Demo {
     @Autowired
     private DemoService demoService;
 
+    @ApiOperation(value="demo样例", notes="demo样例")
     @GetMapping(value = "/demo1")
     public void demo1() {
         log.info(demoService.demo1());

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.easymarket.dao.HandleTableDao" >
+
+    <!--<select id="selectOneUser" resultType="com.seeri.admin.entity.UserEntity">-->
+        <!--SELECT * from st_users where username = #{username}-->
+    <!--</select>-->
+
+    <update id="createTable">
+        create table ${tableName}(
+        <foreach collection="columns" item="listItem" separator=",">
+            ${listItem} varchar(30)
+        </foreach>
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8
+    </update>
+
+</mapper>

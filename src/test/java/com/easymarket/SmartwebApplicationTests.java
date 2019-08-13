@@ -1,4 +1,4 @@
-package com.xiaorui.smartweb;
+package com.easymarket;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
