@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class HandleTableServiceImpl implements HandleTableService {
@@ -17,9 +19,7 @@ public class HandleTableServiceImpl implements HandleTableService {
     @Override
     public String createTable(JSONObject jsonObject) {
         String tableName = jsonObject.getString("tableName");
-        List columns = new ArrayList();
-        columns.add("name");
-        columns.add("age");
+        List columns = jsonObject.getJSONArray("columns");
         handleTableDao.createTable(tableName, columns);
         return null;
     }

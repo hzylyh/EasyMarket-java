@@ -9,7 +9,7 @@
     <update id="createTable">
         create table ${tableName}(
         <foreach collection="columns" item="listItem" separator=",">
-            ${listItem} varchar(30)
+            ${listItem.name} ${listItem.type}
         </foreach>
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8
     </update>
