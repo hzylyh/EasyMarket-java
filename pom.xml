@@ -8,10 +8,10 @@
         <version>2.1.7.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.xiaorui</groupId>
-    <artifactId>smartweb</artifactId>
+    <groupId>com.easymarket</groupId>
+    <artifactId>easymarket</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>smartweb</name>
+    <name>easymarket</name>
     <description>drag web</description>
 
     <properties>
