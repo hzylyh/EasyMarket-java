@@ -1,6 +1,6 @@
 package com.easymarket.utils;
 
-import com.easymarket.vo.Response;
+import com.easymarket.entity.Response;
 
 public class ResponseUtil {
 

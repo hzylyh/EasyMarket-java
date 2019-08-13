@@ -1,4 +1,4 @@
-package com.easymarket.vo;
+package com.easymarket.entity;
 
 import lombok.Data;
 
