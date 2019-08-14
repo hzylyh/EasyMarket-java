@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.easymarket.dao.HandleTemplateDao" >
+
+    <insert id="saveTemplateInfo" parameterType="com.easymarket.entity.TemplateInfoEntity">
+        insert into em_template_info(templateInfo)
+        values
+        (#{templateInfo})
+    </insert>
+
+    <select id="getTemplateInfo" resultType="com.easymarket.entity.TemplateInfoEntity">
+        select * from em_template_info
+        <where>
+            <if test="templateId!=null">
+                and templateId=#{templateId}
+            </if>
+        </where>
+    </select>
+
+</mapper>

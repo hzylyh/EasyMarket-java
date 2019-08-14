@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.easymarket.dao.UserTemplateDao" >
+
+    <insert id="saveUserTemplate" parameterType="com.easymarket.entity.UserTemplateEntity">
+        insert into em_user_template(userId, templateId, customTemplate)
+        values
+        (#{userId}, #{templateId}, #{customTemplate})
+    </insert>
+
+</mapper>
