@@ -12,7 +12,7 @@
         select * from em_template_info
         <where>
             <if test="templateId!=null">
-                and templateId=#{templateId}
+                and id=#{templateId}
             </if>
         </where>
     </select>
