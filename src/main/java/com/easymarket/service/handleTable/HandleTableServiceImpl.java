@@ -23,4 +23,12 @@ public class HandleTableServiceImpl implements HandleTableService {
         handleTableDao.createTable(tableName, columns);
         return null;
     }
+
+    @Override
+    public void getTableInfo(JSONObject jsonObject) {
+        String tableName = jsonObject.getString("tableName");
+        List res = handleTableDao.getTableInfo(tableName);
+
+        System.out.println(res);
+    }
 }

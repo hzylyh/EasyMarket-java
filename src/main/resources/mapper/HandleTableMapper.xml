@@ -14,4 +14,8 @@
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8
     </update>
 
+    <select id="getTableInfo" resultType="Map">
+        desc ${tableName}
+    </select>
+
 </mapper>

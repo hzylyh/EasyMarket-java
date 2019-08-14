@@ -14,15 +14,21 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
 @RestController
-@RequestMapping(value = "/v1")
+@RequestMapping(value = "/v1/table")
 public class HandleTable {
 
     @Autowired
     private HandleTableService handleTableService;
 
-    @PostMapping(value = "/table/create")
+    @PostMapping(value = "/create")
     public Response createTable(@RequestBody JSONObject jsonObject) {
         handleTableService.createTable(jsonObject);
+        return ResponseUtil.success();
+    }
+
+    @PostMapping(value = "/info")
+    public Response getTableInfo(@RequestBody JSONObject jsonObject) {
+        handleTableService.getTableInfo(jsonObject);
         return ResponseUtil.success();
     }
 }
