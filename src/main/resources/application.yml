@@ -33,23 +33,23 @@ spring:
           #??PSCache????????????????PSCache???��??oracle???true??mysql???false?????????????????false
           pool-prepared-statements: false
           max-pool-prepared-statement-per-connection-size: 20
-#    redis:
-#      port: 6379
-#      host: 106.12.93.100
-#      password: 2wer43@WER$#
-#      jedis:
-#        pool:
-#          max-active: 200
-#          max-idle: 10
-#          min-idle: 0
-#      timeout: 10s
+    redis:
+      port: 6379
+      host: 207.246.120.40
+      password: 2wer43@WER$#
+      jedis:
+        pool:
+          max-active: 200
+          max-idle: 10
+          min-idle: 0
+      timeout: 10s
 
       #session�洢����
-#    session:
-#      store-type: redis
-#      redis:
-#        namespace: seeriAdmin
-#      timeout: 10s
+    session:
+      store-type: redis
+      redis:
+        namespace: EasyMarket
+      timeout: 10s
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml
