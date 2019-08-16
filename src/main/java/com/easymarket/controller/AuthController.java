@@ -1,5 +1,6 @@
 package com.easymarket.controller;
 
+import com.easymarket.conf.MyException;
 import com.easymarket.entity.Response;
 import com.easymarket.entity.UserEntity;
 import com.easymarket.service.auth.AuthService;

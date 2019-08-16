@@ -16,6 +16,7 @@ public class CrosConfig implements WebMvcConfigurer {
         registry.addMapping("/**").allowedOrigins("*").allowedHeaders("*");
     }
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(myInterceptor).addPathPatterns("/**").excludePathPatterns("/v4/user/login");
+        registry.addInterceptor(myInterceptor).addPathPatterns("/**").excludePathPatterns("/v1/user/login")
+        .excludePathPatterns("/error");
     }
 }
