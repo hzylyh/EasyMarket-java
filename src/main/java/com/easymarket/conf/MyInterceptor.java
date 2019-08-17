@@ -1,5 +1,7 @@
 package com.easymarket.conf;
 
+import com.alibaba.fastjson.JSONObject;
+import com.easymarket.entity.Response;
 import com.easymarket.utils.JWTUtil;
 import com.easymarket.utils.RedisUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +20,11 @@ public class MyInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        System.out.println("拦截了");
-        System.out.println(request.getRequestURI());
+//        System.out.println("拦截了");
+//        System.out.println(request.getRequestURI());
         String reqToken = request.getHeader("Authorization");
-
+        response.setCharacterEncoding("UTF-8");
+        response.setContentType("application/json; charset=utf-8");
 
         if (reqToken != null) {
             String userId = JWTUtil.getUserId(reqToken);
@@ -30,12 +33,20 @@ public class MyInterceptor implements HandlerInterceptor {
                 return true;
             } else {
                 PrintWriter printWriter = response.getWriter();
-                printWriter.write("{\"code\":\"21001\",\"message\":\"not login!\"}");
+                Response res = new Response();
+                res.setCode("21001");
+                res.setMsg("登录超时，请重新登录");
+//                printWriter.write("{\"code\":\"21001\",\"message\":\"not login!\"}");
+                printWriter.write(JSONObject.toJSONString(res));
                 return false;
             }
         }else {
             PrintWriter printWriter = response.getWriter();
-            printWriter.write("{\"code\":\"21001\",\"message\":\"not login!\"}");
+            Response res = new Response();
+            res.setCode("21002");
+            res.setMsg("未登录");
+//            printWriter.write("{\"code\":\"21001\",\"message\":\"not login!\"}");
+            printWriter.write(JSONObject.toJSONString(res));
             return false;
         }
 //        return true;
