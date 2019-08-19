@@ -19,15 +19,16 @@ public class AuthServiceImpl implements AuthService {
     private RedisUtil redisUtil;
 
     @Override
-    public boolean verifyUser(UserEntity userEntity) {
+    public UserEntity verifyUser(UserEntity userEntity) {
         UserEntity resUser = userDao.selectOneUser(userEntity.getUsername());
         if (null != resUser && resUser.getPassword().equals(userEntity.getPassword())) {
             String token = JWTUtil.generateToken(userEntity.getUsername());
             redisUtil.set(userEntity.getUsername(), token, 1200);
-            return true;
+            resUser.setPassword(null);
+            return resUser;
         } else {
             log.info("密码错误");
-            return false;
+            return null;
         }
     }
 

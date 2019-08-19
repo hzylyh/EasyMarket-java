@@ -1,6 +1,5 @@
 package com.easymarket.controller;
 
-import com.easymarket.conf.MyException;
 import com.easymarket.conf.ResultEnum;
 import com.easymarket.entity.Response;
 import com.easymarket.entity.UserEntity;
@@ -26,11 +25,13 @@ public class AuthController {
 
     @PostMapping(value = "/login")
     public Response login(@RequestBody UserEntity u) {
-        boolean res = authService.verifyUser(u);
-        if (res) {
-            Map<String, Object> token = new HashMap<String, Object>();
-            token.put("token", redisUtil.get(u.getUsername()));
-            return ResponseUtil.success(token);
+        UserEntity res = authService.verifyUser(u);
+        if (null != res) {
+            Map<String, Object> loginRes = new HashMap<String, Object>();
+            loginRes.put("token", redisUtil.get(u.getUsername()));
+            loginRes.put("userId", res.getId());
+            loginRes.put("username", res.getUsername());
+            return ResponseUtil.success(loginRes);
         }else {
             return ResponseUtil.error(ResultEnum.UP_NOT_MATCH);
         }
