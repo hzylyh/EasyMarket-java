@@ -1,6 +1,7 @@
 package com.easymarket.controller;
 
 import com.easymarket.conf.MyException;
+import com.easymarket.conf.ResultEnum;
 import com.easymarket.entity.Response;
 import com.easymarket.entity.UserEntity;
 import com.easymarket.service.auth.AuthService;
@@ -31,7 +32,7 @@ public class AuthController {
             token.put("token", redisUtil.get(u.getUsername()));
             return ResponseUtil.success(token);
         }else {
-            return ResponseUtil.error("50008", "登录错误");
+            return ResponseUtil.error(ResultEnum.UP_NOT_MATCH);
         }
 
     }

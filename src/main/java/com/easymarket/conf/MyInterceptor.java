@@ -33,9 +33,7 @@ public class MyInterceptor implements HandlerInterceptor {
                 return true;
             } else {
                 PrintWriter printWriter = response.getWriter();
-                Response res = new Response();
-                res.setCode("21001");
-                res.setMsg("登录超时，请重新登录");
+                Response res = new Response(ResultEnum.USER_OUT_VALID);
 //                printWriter.write("{\"code\":\"21001\",\"message\":\"not login!\"}");
                 printWriter.write(JSONObject.toJSONString(res));
                 return false;

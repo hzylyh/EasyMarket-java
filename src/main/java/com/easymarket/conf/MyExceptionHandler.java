@@ -20,12 +20,12 @@ public class MyExceptionHandler {
     @ExceptionHandler(value = ArithmeticException.class)
     public Response errHandler(ArithmeticException e) {
         log.error("", e);
-        return ResponseUtil.error("123", "14414");
+        return ResponseUtil.error(ResultEnum.SYSTEMT_TEST);
     }
 
     @ExceptionHandler(value = NullPointerException.class)
     public Response errHandler(NullPointerException e) {
         log.error("", e);
-        return ResponseUtil.error("123", "空指针了");
+        return ResponseUtil.error(ResultEnum.SYSTEM_NULL_POINT);
     }
 }
