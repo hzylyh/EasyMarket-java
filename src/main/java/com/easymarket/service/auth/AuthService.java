@@ -5,4 +5,6 @@ import com.easymarket.entity.UserEntity;
 public interface AuthService {
 
     boolean verifyUser(UserEntity u);
+
+    void removeAuth(UserEntity userEntity);
 }

@@ -30,4 +30,9 @@ public class AuthServiceImpl implements AuthService {
             return false;
         }
     }
+
+    @Override
+    public void removeAuth(UserEntity userEntity) {
+        redisUtil.del(userEntity.getUsername());
+    }
 }

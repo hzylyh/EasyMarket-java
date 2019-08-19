@@ -37,6 +37,12 @@ public class AuthController {
 
     }
 
+    @PostMapping(value = "/logout")
+    public Response logout(@RequestBody UserEntity userEntity) {
+        authService.removeAuth(userEntity);
+        return ResponseUtil.success("退出成功");
+    }
+
 //    @PostMapping(value = "/test")
 //    public Response test() {
 //        return ResponseUtil.success();
