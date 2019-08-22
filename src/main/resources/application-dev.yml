@@ -1,0 +1,5 @@
+server:
+  port: 9879
+
+upload:
+  path: G:/codedir/java/smartweb-java/upload/

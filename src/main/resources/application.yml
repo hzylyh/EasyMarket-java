@@ -1,7 +1,6 @@
-server:
-  port: 9879
-
 spring:
+    profiles:
+        active: dev
     datasource:
         name: easymarket
         type: com.alibaba.druid.pool.DruidDataSource
@@ -11,7 +10,7 @@ spring:
           filters: stat
           driver-class-name: com.mysql.cj.jdbc.Driver
           #????????
-          url: jdbc:mysql://207.246.120.40:3306/easymarket?useUnicode=true&characterEncoding=utf8
+          url: jdbc:mysql://116.85.15.199:3306/easymarket?useUnicode=true&characterEncoding=utf8
           username: root
           # ֮����Ҫ����
           password: 2wer43@WER$#
@@ -33,8 +32,11 @@ spring:
           pool-prepared-statements: false
           max-pool-prepared-statement-per-connection-size: 20
     redis:
-      port: 6379
-      host: 207.246.120.40
+      #port: 6379
+      port: 6679
+
+      #host: 207.246.120.40
+      host: 116.85.15.199
       password: 2wer43@WER$#
       jedis:
         pool:

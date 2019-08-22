@@ -4,8 +4,7 @@ import java.io.*;
 
 public class FileUtil {
 
-    public static String saveImg(byte[] fileBytes, String fileName) throws IOException {
-        String targetPath = "G:\\codedir\\java\\smartweb-java\\upload\\";
+    public static String saveImg(byte[] fileBytes, String targetPath, String fileName) throws IOException {
         File targetFilePath = new File(targetPath);
         if(!targetFilePath.exists()){
             targetFilePath.mkdirs();
