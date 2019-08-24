@@ -3,9 +3,13 @@
 <mapper namespace="com.easymarket.dao.UserTemplateDao" >
 
     <insert id="saveUserTemplate" parameterType="com.easymarket.entity.UserTemplateEntity">
-        insert into em_user_template(userId, templateId, customTemplate)
+        insert into em_user_template(userId, templateId, templateInfo)
         values
-        (#{userId}, #{templateId}, #{customTemplate})
+        (#{userId}, #{templateId}, #{templateInfo})
     </insert>
+
+    <select id="selectTempInfo" resultType="com.easymarket.VO.TemplateInfoVO">
+        select templateInfo from em_user_template where templateId = #{templateId}
+    </select>
 
 </mapper>

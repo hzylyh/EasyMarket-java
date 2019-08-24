@@ -2,7 +2,7 @@ package com.easymarket.conf;
 
 public enum  ResultEnum {
     // 成功
-    SUCCESS("20000", "请求成功"),
+    SUCCESS("000000", "请求成功"),
 
     // 登录错误，用户名密码错误
     UP_NOT_MATCH("30001", "登录名或密码错误"),

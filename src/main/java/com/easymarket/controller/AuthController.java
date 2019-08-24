@@ -15,7 +15,7 @@ import java.util.Map;
 
 @Slf4j
 @RestController
-@RequestMapping(value = "/v1/user")
+@RequestMapping(value = "/api/user")
 public class AuthController {
     @Autowired
     private AuthService authService;
@@ -27,11 +27,11 @@ public class AuthController {
     public Response login(@RequestBody UserEntity u) {
         UserEntity res = authService.verifyUser(u);
         if (null != res) {
-            Map<String, Object> loginRes = new HashMap<String, Object>();
-            loginRes.put("token", redisUtil.get(u.getUsername()));
-            loginRes.put("userId", res.getId());
-            loginRes.put("username", res.getUsername());
-            return ResponseUtil.success(loginRes);
+//            Map<String, Object> loginRes = new HashMap<String, Object>();
+//            loginRes.put("token", redisUtil.get(u.getUsername()));
+//            loginRes.put("userId", res.getId());
+//            loginRes.put("username", res.getUsername());
+            return ResponseUtil.success(redisUtil.get(u.getUsername()));
         }else {
             return ResponseUtil.error(ResultEnum.UP_NOT_MATCH);
         }

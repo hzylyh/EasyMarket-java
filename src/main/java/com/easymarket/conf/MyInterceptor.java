@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.PrintWriter;
+import java.util.Map;
 
 @Component
 public class MyInterceptor implements HandlerInterceptor {
@@ -28,9 +29,18 @@ public class MyInterceptor implements HandlerInterceptor {
 
         if (reqToken != null) {
             String userId = JWTUtil.getUserId(reqToken);
-            String tokenInRedis = (String) redisUtil.get(userId);
-            if (tokenInRedis != null && tokenInRedis.equals(reqToken)) {
-                return true;
+            Map<String, Object> userInfo = (Map<String, Object>) redisUtil.get(userId);
+            if (userInfo != null) {
+                String tokenInRedis = (String) userInfo.get("token");
+                if (tokenInRedis.equals(reqToken)) {
+                    return true;
+                } else {
+                    PrintWriter printWriter = response.getWriter();
+                    Response res = new Response(ResultEnum.USER_OUT_VALID);
+//                printWriter.write("{\"code\":\"21001\",\"message\":\"not login!\"}");
+                    printWriter.write(JSONObject.toJSONString(res));
+                    return false;
+                }
             } else {
                 PrintWriter printWriter = response.getWriter();
                 Response res = new Response(ResultEnum.USER_OUT_VALID);

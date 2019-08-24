@@ -15,10 +15,11 @@ public class HandleTemplateServiceImpl implements HandleTemplateService {
     private HandleTemplateDao handleTemplateDao;
 
     @Override
-    public void saveTemplateInfo(TemplateInfoEntity templateInfoEntity) {
+    public void saveTemplateInfo(JSONObject jsonObject) {
 //        TemplateInfoEntity templateInfoEntity = new TemplateInfoEntity();
 //        templateInfoEntity.setTemplateInfo(jsonObject.getString("templateInfo"));
-        handleTemplateDao.saveTemplateInfo(templateInfoEntity);
+        String templateInfo = jsonObject.getString("templateInfo");
+        handleTemplateDao.saveTemplateInfo(templateInfo);
     }
 
     @Override

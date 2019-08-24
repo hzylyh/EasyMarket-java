@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface HandleTemplateDao {
-    void saveTemplateInfo(TemplateInfoEntity templateInfoEntity);
+    void saveTemplateInfo(@Param("templateInfo") String templateInfo);
 
     List<TemplateInfoEntity> getTemplateInfo(@Param("templateId") Integer templateId);
 }

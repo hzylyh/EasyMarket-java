@@ -8,6 +8,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Slf4j
 @Service
 public class AuthServiceImpl implements AuthService {
@@ -23,7 +26,11 @@ public class AuthServiceImpl implements AuthService {
         UserEntity resUser = userDao.selectOneUser(userEntity.getUsername());
         if (null != resUser && resUser.getPassword().equals(userEntity.getPassword())) {
             String token = JWTUtil.generateToken(userEntity.getUsername());
-            redisUtil.set(userEntity.getUsername(), token, 1200);
+            Map<String, Object> userInfo = new HashMap<>();
+            userInfo.put("token", token);
+            userInfo.put("userId", resUser.getId());
+            userInfo.put("username", resUser.getUsername());
+            redisUtil.set(userEntity.getUsername(), userInfo, 1200);
             resUser.setPassword(null);
             return resUser;
         } else {

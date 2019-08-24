@@ -2,6 +2,7 @@ package com.easymarket.controller;
 
 
 import com.alibaba.fastjson.JSONObject;
+import com.easymarket.VO.TemplateInfoVO;
 import com.easymarket.entity.Response;
 import com.easymarket.entity.TemplateInfoEntity;
 import com.easymarket.service.handleTemplate.HandleTemplateService;
@@ -19,10 +20,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
 
 @Slf4j
 @RestController
-@RequestMapping(value = "/v1/template")
+@RequestMapping(value = "/api/template")
 @Api(value = "/v1/template", description = "操作模板对应接口")
 public class HandleTemplate {
 
@@ -37,20 +39,26 @@ public class HandleTemplate {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "templateInfo", value = "模板信息", required = true, dataType = "String",paramType = "String"),
     })
-    public Response saveTemplateInfo(@RequestBody TemplateInfoEntity templateInfoEntity) {
-        handleTemplateService.saveTemplateInfo(templateInfoEntity);
+    public Response saveTemplateInfo(@RequestBody JSONObject jsonObject) {
+        handleTemplateService.saveTemplateInfo(jsonObject);
         return ResponseUtil.success();
     }
 
     @PostMapping(value = "/save/userTemplate")
     public Response saveUserTemplate(@RequestBody JSONObject jsonObject) {
-        userTemplateService.saveUserTemplate(jsonObject);
-        return ResponseUtil.success();
+        Map templateId = userTemplateService.saveUserTemplate(jsonObject);
+        return ResponseUtil.success(templateId);
     }
 
-    @PostMapping(value = "/getInfo")
+//    @PostMapping(value = "/getInfo")
+//    public Response getTemplateInfo(@RequestBody JSONObject jsonObject) {
+//        List<TemplateInfoEntity> templateList =  handleTemplateService.getTemplateInfo(jsonObject);
+//        return ResponseUtil.success(templateList);
+//    }
+
+    @PostMapping(value = "/get/templateInfo")
     public Response getTemplateInfo(@RequestBody JSONObject jsonObject) {
-        List<TemplateInfoEntity> templateList =  handleTemplateService.getTemplateInfo(jsonObject);
-        return ResponseUtil.success(templateList);
+        TemplateInfoVO template =  userTemplateService.getTempInfo(jsonObject);
+        return ResponseUtil.success(template);
     }
 }

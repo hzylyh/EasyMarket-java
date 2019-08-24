@@ -25,6 +25,7 @@ public class UploadServiceImpl implements UploadService {
         String imgID = IDGenerate.getID();
         try {
             serverPath = FileUtil.saveImg(file.getBytes(), uploadPath,fileName + "-" + imgID);
+            log.info("上传成功");
         } catch (IOException e) {
             log.error("", e);
             throw new MyException(ResultEnum.UPLOAD_FILE_EMPTY);

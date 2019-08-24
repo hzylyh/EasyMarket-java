@@ -5,7 +5,8 @@ import lombok.Data;
 
 @Data
 public class UserTemplateEntity {
+    private Integer id;
     private Integer userId;
-    private Integer templateId;
-    private String customTemplate;
+    private String templateId;
+    private String templateInfo;
 }

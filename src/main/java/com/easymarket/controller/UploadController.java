@@ -14,10 +14,12 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 @Slf4j
 @RestController
-@RequestMapping(value = "/v1/upload")
+@RequestMapping(value = "/api/upload")
 public class UploadController {
 
     @Autowired
@@ -26,7 +28,9 @@ public class UploadController {
     @PostMapping(value = "/img")
     public Response imgUpload(@RequestParam("file")MultipartFile file) {
         String serverPath = uploadService.saveImg(file);
-        return ResponseUtil.success(serverPath);
+        Map<String, Object> res = new HashMap<String, Object>();
+        res.put("serverPath", serverPath);
+        return ResponseUtil.success(res);
     }
 
 }
