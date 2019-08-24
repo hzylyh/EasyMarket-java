@@ -8,16 +8,14 @@ import com.easymarket.entity.TemplateInfoEntity;
 import com.easymarket.service.handleTemplate.HandleTemplateService;
 import com.easymarket.service.handleUserTemplate.UserTemplateService;
 import com.easymarket.utils.ResponseUtil;
+import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
@@ -60,5 +58,29 @@ public class HandleTemplate {
     public Response getTemplateInfo(@RequestBody JSONObject jsonObject) {
         TemplateInfoVO template =  userTemplateService.getTempInfo(jsonObject);
         return ResponseUtil.success(template);
+    }
+
+    @PostMapping(value = "/del/templateInfo")
+    public Response delTemplateInfo(@RequestBody JSONObject jsonObject) {
+        userTemplateService.delTempInfo(jsonObject);
+        return ResponseUtil.success();
+    }
+
+    @PostMapping(value = "/get/templateList")
+    public Response getTemplateList(@RequestBody JSONObject jsonObject) {
+        PageInfo<TemplateInfoVO> templateList =  userTemplateService.getTempList(jsonObject);
+        return ResponseUtil.success(templateList);
+    }
+
+    @PostMapping(value = "/submit/form")
+    public Response submitForm(@RequestBody JSONObject jsonObject) {
+        userTemplateService.submitForm(jsonObject);
+        return ResponseUtil.success();
+    }
+
+    @PostMapping(value = "/visit")
+    public Response submitVisitInfo(@RequestBody JSONObject jsonObject) {
+        userTemplateService.submitVisitInfo(jsonObject);
+        return ResponseUtil.success();
     }
 }

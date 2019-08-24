@@ -19,6 +19,7 @@ public class HandleTemplateServiceImpl implements HandleTemplateService {
 //        TemplateInfoEntity templateInfoEntity = new TemplateInfoEntity();
 //        templateInfoEntity.setTemplateInfo(jsonObject.getString("templateInfo"));
         String templateInfo = jsonObject.getString("templateInfo");
+        String temmplateId = jsonObject.getString("templateId");
         handleTemplateDao.saveTemplateInfo(templateInfo);
     }
 

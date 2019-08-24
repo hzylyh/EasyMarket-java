@@ -27,7 +27,7 @@ public class MyInterceptor implements HandlerInterceptor {
         response.setCharacterEncoding("UTF-8");
         response.setContentType("application/json; charset=utf-8");
 
-        if (reqToken != null) {
+        if (reqToken != null && !"".equals(reqToken) && !"undefined".equals(reqToken)) {
             String userId = JWTUtil.getUserId(reqToken);
             Map<String, Object> userInfo = (Map<String, Object>) redisUtil.get(userId);
             if (userInfo != null) {

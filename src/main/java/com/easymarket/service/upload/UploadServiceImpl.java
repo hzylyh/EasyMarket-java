@@ -18,18 +18,23 @@ public class UploadServiceImpl implements UploadService {
     @Value("${upload.path}")
     private String uploadPath;
 
+    @Value("${upload.url}")
+    private String url;
+
     @Override
     public String saveImg(MultipartFile file) {
         String fileName = file.getOriginalFilename();
         String serverPath = null;
+        String fileUrl = null;
         String imgID = IDGenerate.getID();
         try {
             serverPath = FileUtil.saveImg(file.getBytes(), uploadPath,fileName + "-" + imgID);
+            fileUrl = url + "/upload/" + fileName + "-" + imgID;
             log.info("上传成功");
         } catch (IOException e) {
             log.error("", e);
             throw new MyException(ResultEnum.UPLOAD_FILE_EMPTY);
         }
-        return serverPath;
+        return fileUrl;
     }
 }

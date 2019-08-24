@@ -57,9 +57,9 @@ mybatis:
 #  type-aliases-package: com.seeri.admin.entity
 
 #pagehelper
-#pagehelper:
-#    helperDialect: mysql
-#    reasonable: true
-#    supportMethodsArguments: true
-#    params: count=countSql
-#    returnPageInfo: check
+pagehelper:
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    params: count=countSql
+    returnPageInfo: check

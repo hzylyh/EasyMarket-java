@@ -2,4 +2,5 @@ server:
   port: 9879
 
 upload:
-  path: /home/upload/
+  path: /home/easyMarket/upload/
+  url: http://47.75.166.145:9879

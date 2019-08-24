@@ -3,3 +3,4 @@ server:
 
 upload:
   path: G:/codedir/java/smartweb-java/upload/
+  url: http://10.0.0.63:9879

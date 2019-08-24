@@ -11,5 +11,25 @@
     <select id="selectTempInfo" resultType="com.easymarket.VO.TemplateInfoVO">
         select templateInfo from em_user_template where templateId = #{templateId}
     </select>
+    
+    <select id="selectTempList" resultType="com.easymarket.VO.TemplateInfoVO">
+        select t3.templateId, t3.viewCount, COUNT(t4.id) as registerCount from
+        (select t1.userId, t1.templateId, t2.comeSite, COUNT(t1.templateId) as viewCount from em_user_template t1
+        LEFT JOIN
+        em_template_detail t2
+        on t1.templateId = t2.templateId
+		where t1.userId = #{userId}
+        GROUP BY t1.templateId) t3
+        LEFT JOIN
+        em_template_detail t4
+        on t3.templateId = t4.templateId
+        GROUP BY t3.templateId
+    </select>
+
+    <update id="updateUserTemplate" parameterType="com.easymarket.entity.UserTemplateEntity">
+        update em_user_template
+        set templateInfo = #{templateInfo}
+        where templateId = #{templateId}
+    </update>
 
 </mapper>
