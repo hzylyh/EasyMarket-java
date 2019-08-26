@@ -8,5 +8,6 @@ public class UserTemplateEntity {
     private Integer id;
     private Integer userId;
     private String templateId;
+    private String templateName;
     private String templateInfo;
 }

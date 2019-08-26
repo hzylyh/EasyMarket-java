@@ -43,6 +43,7 @@ public class UserTemplateServiceImpl implements UserTemplateService {
             templateId = IDGenerate.getID();
             userTemplateEntity.setTemplateId(templateId);
             userTemplateEntity.setTemplateInfo(jsonObject.getString("templateInfo"));
+            userTemplateEntity.setTemplateName(jsonObject.getString("templateName"));
             userTemplateDao.saveUserTemplate(userTemplateEntity);
             Map res = new HashMap();
             res.put("templateId", templateId);
@@ -51,6 +52,7 @@ public class UserTemplateServiceImpl implements UserTemplateService {
             System.out.println("xiugai");
             userTemplateEntity.setTemplateId(templateId);
             userTemplateEntity.setTemplateInfo(jsonObject.getString("templateInfo"));
+            userTemplateEntity.setTemplateName(jsonObject.getString("templateName"));
             userTemplateDao.updateUserTemplate(userTemplateEntity);
             return null;
         }
