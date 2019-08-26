@@ -6,4 +6,10 @@
         SELECT * from em_user where username = #{username}
     </select>
 
+    <insert id="insertUser" parameterType="com.easymarket.entity.UserEntity">
+        insert into em_user(username, password)
+        values
+        (#{username}, #{password})
+    </insert>
+
 </mapper>

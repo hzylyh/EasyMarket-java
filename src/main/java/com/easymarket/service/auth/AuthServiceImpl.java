@@ -43,4 +43,9 @@ public class AuthServiceImpl implements AuthService {
     public void removeAuth(UserEntity userEntity) {
         redisUtil.del(userEntity.getUsername());
     }
+
+    @Override
+    public void register(UserEntity u) {
+        userDao.insertUser(u);
+    }
 }

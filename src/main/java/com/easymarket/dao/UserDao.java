@@ -5,4 +5,6 @@ import org.apache.ibatis.annotations.Param;
 
 public interface UserDao {
     UserEntity selectOneUser(@Param("username") String username);
+
+    void insertUser(UserEntity u);
 }

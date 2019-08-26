@@ -23,6 +23,7 @@ public class CrosConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(myInterceptor).addPathPatterns("/**").excludePathPatterns("/api/user/login")
                 .excludePathPatterns("/api/upload/img")
+                .excludePathPatterns("/api/user/register")
                 .excludePathPatterns("/api/template/submit/form")
                 .excludePathPatterns("/api/template/get/templateInfo")
                 .excludePathPatterns("/api/template/visit")
