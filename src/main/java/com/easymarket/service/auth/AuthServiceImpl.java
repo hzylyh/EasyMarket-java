@@ -45,7 +45,13 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
-    public void register(UserEntity u) {
-        userDao.insertUser(u);
+    public boolean register(UserEntity u) {
+        UserEntity resUser = userDao.selectOneUser(u.getUsername());
+        if (null == resUser) {
+            userDao.insertUser(u);
+            return true;
+        } else {
+            return false;
+        }
     }
 }

@@ -56,8 +56,11 @@ public class AuthController {
 
     @PostMapping(value = "/register")
     public Response register(@RequestBody UserEntity u) {
-        authService.register(u);
-        return ResponseUtil.success();
-
+        boolean res = authService.register(u);
+        if (res) {
+            return ResponseUtil.success();
+        } else {
+            return ResponseUtil.error(ResultEnum.ALREADY_EXIST);
+        }
     }
 }

@@ -8,5 +8,5 @@ public interface AuthService {
 
     void removeAuth(UserEntity userEntity);
 
-    void register(UserEntity u);
+    boolean register(UserEntity u);
 }
