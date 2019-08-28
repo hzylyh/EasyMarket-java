@@ -3,4 +3,4 @@ server:
 
 upload:
   path: /home/easyMarket/upload/
-  url: http://47.75.166.145:9879
+  url: http://116.85.15.199:9879
