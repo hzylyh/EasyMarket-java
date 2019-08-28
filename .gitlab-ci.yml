@@ -1,0 +1,21 @@
+stages:
+  - build
+  - deploy
+
+job1:
+  stage: build
+  tags:
+    - easymarket-java
+  only:
+    - master
+  script:
+    - echo "I"
+
+job2:
+  stage: deploy
+  tags:
+    - easymarket-java
+  only:
+    - master
+  script:
+    - echo "am"

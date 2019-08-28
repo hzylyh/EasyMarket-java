@@ -1,6 +1,6 @@
 spring:
     profiles:
-        active: dev
+        active: prod
     datasource:
         name: easymarket
         type: com.alibaba.druid.pool.DruidDataSource
