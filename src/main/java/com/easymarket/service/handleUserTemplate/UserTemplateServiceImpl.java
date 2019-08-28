@@ -10,11 +10,14 @@ import com.easymarket.entity.TemplateDetailEntity;
 import com.easymarket.entity.UserTemplateEntity;
 import com.easymarket.entity.VisitDetailEntity;
 import com.easymarket.utils.IDGenerate;
+import com.easymarket.utils.JWTUtil;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,11 +38,12 @@ public class UserTemplateServiceImpl implements UserTemplateService {
     private VisitDetailDao visitDetailDao;
 
     @Override
-    public Map saveUserTemplate(JSONObject jsonObject) {
+    public Map saveUserTemplate(JSONObject jsonObject, HttpServletRequest request) {
         String templateId = jsonObject.getString("templateId");
         UserTemplateEntity userTemplateEntity = new UserTemplateEntity();
         if (null == templateId) {
-            userTemplateEntity.setUserId(1);
+            String userId = JWTUtil.getUserId(request.getHeader("Authorization"));
+            userTemplateEntity.setUserId(Integer.parseInt(userId));
             templateId = IDGenerate.getID();
             userTemplateEntity.setTemplateId(templateId);
             userTemplateEntity.setTemplateInfo(jsonObject.getString("templateInfo"));

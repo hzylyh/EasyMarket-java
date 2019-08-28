@@ -17,6 +17,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
 
@@ -43,8 +44,8 @@ public class HandleTemplate {
     }
 
     @PostMapping(value = "/save/userTemplate")
-    public Response saveUserTemplate(@RequestBody JSONObject jsonObject) {
-        Map templateId = userTemplateService.saveUserTemplate(jsonObject);
+    public Response saveUserTemplate(@RequestBody JSONObject jsonObject, HttpServletRequest request) {
+        Map templateId = userTemplateService.saveUserTemplate(jsonObject, request);
         return ResponseUtil.success(templateId);
     }
 
