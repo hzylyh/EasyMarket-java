@@ -10,6 +10,7 @@ job1:
     - master
   script:
     - mvn clean package
+    - echo `pwd`
 
 job2:
   stage: deploy
