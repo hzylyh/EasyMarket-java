@@ -9,7 +9,7 @@ job1:
   only:
     - master
   script:
-    - echo "I"
+    - mvn clean package
 
 job2:
   stage: deploy
