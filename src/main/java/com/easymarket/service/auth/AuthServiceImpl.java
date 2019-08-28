@@ -25,12 +25,12 @@ public class AuthServiceImpl implements AuthService {
     public UserEntity verifyUser(UserEntity userEntity) {
         UserEntity resUser = userDao.selectOneUser(userEntity.getUsername());
         if (null != resUser && resUser.getPassword().equals(userEntity.getPassword())) {
-            String token = JWTUtil.generateToken(userEntity.getUsername());
+            String token = JWTUtil.generateToken(resUser.getId());
             Map<String, Object> userInfo = new HashMap<>();
             userInfo.put("token", token);
             userInfo.put("userId", resUser.getId());
             userInfo.put("username", resUser.getUsername());
-            redisUtil.set(userEntity.getUsername(), userInfo, 1200);
+            redisUtil.set(Integer.toString(resUser.getId()), userInfo, 1200);
             resUser.setPassword(null);
             return resUser;
         } else {

@@ -17,7 +17,7 @@ public class JWTUtil {
     public static final String SECRET = "JKKLJOoasdlfj";
 
 
-    public static String generateToken(String userId) {
+    public static String generateToken(Integer userId) {
         Date iatDate = new Date();
 
         //header map
@@ -30,7 +30,7 @@ public class JWTUtil {
         String token = null; // signature
         try {
             token = JWT.create().withHeader(headerMap) // header
-                    .withClaim("user_id", null == userId ? null : userId.toString())
+                    .withClaim("user_id", userId)
                     .withIssuedAt(iatDate) // sign time
                     .sign(Algorithm.HMAC256(SECRET));
         } catch (UnsupportedEncodingException e) {
@@ -51,12 +51,14 @@ public class JWTUtil {
         return jwt.getClaims();
     }
 
-    public static String getUserId(String token) {
+    public static Integer getUserId(String token) {
         Map<String, Claim> claims = verifyToken(token);
         Claim user_id_claim = claims.get("user_id");
         if (null == user_id_claim || StringUtils.isEmpty(user_id_claim.asString())) {
             // token 校验失败, 抛出Token验证非法异常
+            System.out.println(user_id_claim);
         }
-        return user_id_claim.asString();
+        System.out.println(user_id_claim.asInt());
+        return user_id_claim.asInt();
     }
 }

@@ -42,8 +42,8 @@ public class UserTemplateServiceImpl implements UserTemplateService {
         String templateId = jsonObject.getString("templateId");
         UserTemplateEntity userTemplateEntity = new UserTemplateEntity();
         if (null == templateId) {
-            String userId = JWTUtil.getUserId(request.getHeader("Authorization"));
-            userTemplateEntity.setUserId(Integer.parseInt(userId));
+            Integer userId = JWTUtil.getUserId(request.getHeader("Authorization"));
+            userTemplateEntity.setUserId(userId);
             templateId = IDGenerate.getID();
             userTemplateEntity.setTemplateId(templateId);
             userTemplateEntity.setTemplateInfo(jsonObject.getString("templateInfo"));

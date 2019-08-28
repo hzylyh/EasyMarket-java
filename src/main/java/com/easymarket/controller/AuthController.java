@@ -31,7 +31,7 @@ public class AuthController {
 //            loginRes.put("token", redisUtil.get(u.getUsername()));
 //            loginRes.put("userId", res.getId());
 //            loginRes.put("username", res.getUsername());
-            return ResponseUtil.success(redisUtil.get(u.getUsername()));
+            return ResponseUtil.success(redisUtil.get(Integer.toString(res.getId())));
         }else {
             return ResponseUtil.error(ResultEnum.UP_NOT_MATCH);
         }
