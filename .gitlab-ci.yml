@@ -10,8 +10,6 @@ job1:
     - master
   script:
     - mvn clean package
-    - echo `pwd`
-    - cp ./target/easymarket-0.0.1-SNAPSHOT.jar /opt
 
 job2:
   stage: deploy
@@ -20,4 +18,5 @@ job2:
   only:
     - master
   script:
-    - echo "am"
+    - scp ./target/easymarket-0.0.1-SNAPSHOT.jar root@116.85.15.199:/home/easymarket
+    - ssh root@116.85.15.199 "sh /home/easymarket/shutdown.sh; sh /home/easymarket/startup.sh"
