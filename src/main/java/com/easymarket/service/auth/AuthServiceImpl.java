@@ -30,7 +30,7 @@ public class AuthServiceImpl implements AuthService {
             userInfo.put("token", token);
             userInfo.put("userId", resUser.getId());
             userInfo.put("username", resUser.getUsername());
-            redisUtil.set(Integer.toString(resUser.getId()), userInfo, 1200);
+            redisUtil.set(Integer.toString(resUser.getId()), userInfo);
             resUser.setPassword(null);
             return resUser;
         } else {
