@@ -16,7 +16,7 @@
         select t3.templateId, t3.templateName, t3.viewCount, COUNT(t4.id) as registerCount from
         (select t1.userId, t1.templateId, t1.templateName, t2.comeSite, COUNT(t1.templateId) as viewCount from em_user_template t1
         LEFT JOIN
-        em_template_detail t2
+        em_visit_detail t2
         on t1.templateId = t2.templateId
 		where t1.userId = #{userId}
         GROUP BY t1.templateId) t3
