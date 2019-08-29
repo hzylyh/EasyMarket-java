@@ -3,9 +3,9 @@
 <mapper namespace="com.easymarket.dao.VisitDetailDao" >
 
     <insert id="insertVisitInfo" parameterType="com.easymarket.entity.VisitDetailEntity">
-        insert into em_visit_detail(templateId, comeSite)
+        insert into em_visit_detail(templateId, comeSite, visitTime)
         values
-        (#{templateId}, #{comeSite})
+        (#{templateId}, #{comeSite}, #{visitTime})
     </insert>
 
 </mapper>

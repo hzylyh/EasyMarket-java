@@ -11,6 +11,7 @@ import com.easymarket.entity.UserTemplateEntity;
 import com.easymarket.entity.VisitDetailEntity;
 import com.easymarket.utils.IDGenerate;
 import com.easymarket.utils.JWTUtil;
+import com.easymarket.utils.TimeUtil;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -84,6 +85,7 @@ public class UserTemplateServiceImpl implements UserTemplateService {
         VisitDetailEntity visitDetailEntity = new VisitDetailEntity();
         visitDetailEntity.setTemplateId(jsonObject.getString("templateId"));
         visitDetailEntity.setComeSite(jsonObject.getString("comeSite"));
+        visitDetailEntity.setVisitTime(TimeUtil.getNow());
         visitDetailDao.insertVisitInfo(visitDetailEntity);
     }
 
