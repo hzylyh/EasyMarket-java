@@ -10,4 +10,5 @@ public class UserTemplateEntity {
     private String templateId;
     private String templateName;
     private String templateInfo;
+    private Boolean isPreview;
 }

@@ -42,27 +42,34 @@ public class UserTemplateServiceImpl implements UserTemplateService {
     public Map saveUserTemplate(JSONObject jsonObject, HttpServletRequest request) {
         String templateId = jsonObject.getString("templateId");
         UserTemplateEntity userTemplateEntity = new UserTemplateEntity();
+        userTemplateEntity.setTemplateInfo(jsonObject.getString("templateInfo"));
+        userTemplateEntity.setTemplateName(jsonObject.getString("templateName"));
+        userTemplateEntity.setIsPreview(jsonObject.getBoolean("isPreview"));
         if (null == templateId) {
             Integer userId = JWTUtil.getUserId(request.getHeader("Authorization"));
             userTemplateEntity.setUserId(userId);
             templateId = IDGenerate.getID();
             userTemplateEntity.setTemplateId(templateId);
-            userTemplateEntity.setTemplateInfo(jsonObject.getString("templateInfo"));
-            userTemplateEntity.setTemplateName(jsonObject.getString("templateName"));
-            userTemplateDao.saveUserTemplate(userTemplateEntity);
-            Map res = new HashMap();
-            res.put("templateId", templateId);
-            return res;
+//            userTemplateEntity.setTemplateInfo(jsonObject.getString("templateInfo"));
+//            userTemplateEntity.setTemplateName(jsonObject.getString("templateName"));
+//            userTemplateDao.saveUserTemplate(userTemplateEntity);
+//            Map res = new HashMap();
+//            res.put("templateId", templateId);
+//            return res;
         } else {
             System.out.println("xiugai");
             userTemplateEntity.setTemplateId(templateId);
-            userTemplateEntity.setTemplateInfo(jsonObject.getString("templateInfo"));
-            userTemplateEntity.setTemplateName(jsonObject.getString("templateName"));
-            userTemplateDao.updateUserTemplate(userTemplateEntity);
-            Map res = new HashMap();
-            res.put("templateId", templateId);
-            return res;
+//            userTemplateEntity.setTemplateInfo(jsonObject.getString("templateInfo"));
+//            userTemplateEntity.setTemplateName(jsonObject.getString("templateName"));
+//            userTemplateDao.updateUserTemplate(userTemplateEntity);
+//            Map res = new HashMap();
+//            res.put("templateId", templateId);
+//            return res;
         }
+        userTemplateDao.updateUserTemplate(userTemplateEntity);
+        Map res = new HashMap();
+        res.put("templateId", templateId);
+        return res;
 
     }
 
