@@ -3,9 +3,9 @@
 <mapper namespace="com.easymarket.dao.TemplateDetailDao" >
 
     <insert id="insertRegisterInfo" parameterType="com.easymarket.entity.TemplateDetailEntity">
-        insert into em_template_detail(username, phone, templateId, sourceIP, comeSite)
+        insert into em_template_detail(username, phone, templateId, sourceIP, comeSite, registerTime)
         values
-        (#{username}, #{phone}, #{templateId}, #{sourceIP}, #{comeSite})
+        (#{username}, #{phone}, #{templateId}, #{sourceIP}, #{comeSite}, #{registerTime})
     </insert>
 
 </mapper>

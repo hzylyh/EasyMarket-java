@@ -10,4 +10,5 @@ public class TemplateDetailEntity {
     private String templateId;
     private String sourceIP;
     private String comeSite;
+    private Long registerTime;
 }

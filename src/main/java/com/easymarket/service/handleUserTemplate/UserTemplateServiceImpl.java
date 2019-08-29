@@ -77,6 +77,7 @@ public class UserTemplateServiceImpl implements UserTemplateService {
         templateDetailEntity.setPhone(jsonObject.getString("phone"));
         templateDetailEntity.setTemplateId(jsonObject.getString("templateId"));
         templateDetailEntity.setComeSite(jsonObject.getString("comeSite"));
+        templateDetailEntity.setRegisterTime(TimeUtil.getNow());
         templateDetailDao.insertRegisterInfo(templateDetailEntity);
     }
 
