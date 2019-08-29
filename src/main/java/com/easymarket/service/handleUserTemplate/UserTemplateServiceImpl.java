@@ -59,7 +59,9 @@ public class UserTemplateServiceImpl implements UserTemplateService {
             userTemplateEntity.setTemplateInfo(jsonObject.getString("templateInfo"));
             userTemplateEntity.setTemplateName(jsonObject.getString("templateName"));
             userTemplateDao.updateUserTemplate(userTemplateEntity);
-            return null;
+            Map res = new HashMap();
+            res.put("templateId", templateId);
+            return res;
         }
 
     }
