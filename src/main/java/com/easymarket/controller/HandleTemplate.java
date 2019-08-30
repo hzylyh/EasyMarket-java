@@ -80,7 +80,8 @@ public class HandleTemplate {
     }
 
     @PostMapping(value = "/visit")
-    public Response submitVisitInfo(@RequestBody JSONObject jsonObject) {
+    public Response submitVisitInfo(@RequestBody JSONObject jsonObject, HttpServletRequest request) {
+        System.out.println(request.getHeaders("x-forwarded-for"));
         userTemplateService.submitVisitInfo(jsonObject);
         return ResponseUtil.success();
     }
