@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
+import java.sql.Time;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -45,11 +46,13 @@ public class UserTemplateServiceImpl implements UserTemplateService {
         userTemplateEntity.setTemplateInfo(jsonObject.getString("templateInfo"));
         userTemplateEntity.setTemplateName(jsonObject.getString("templateName"));
         userTemplateEntity.setIsPreview(jsonObject.getBoolean("isPreview"));
+        userTemplateEntity.setModifyTime(TimeUtil.getNow());
         if (null == templateId) {
             Integer userId = JWTUtil.getUserId(request.getHeader("Authorization"));
             userTemplateEntity.setUserId(userId);
             templateId = IDGenerate.getID();
             userTemplateEntity.setTemplateId(templateId);
+            userTemplateEntity.setCreateTime(TimeUtil.getNow());
 //            userTemplateEntity.setTemplateInfo(jsonObject.getString("templateInfo"));
 //            userTemplateEntity.setTemplateName(jsonObject.getString("templateName"));
             userTemplateDao.saveUserTemplate(userTemplateEntity);

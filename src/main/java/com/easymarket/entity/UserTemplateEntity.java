@@ -11,4 +11,6 @@ public class UserTemplateEntity {
     private String templateName;
     private String templateInfo;
     private Boolean isPreview;
+    private Long createTime;
+    private Long modifyTime;
 }
