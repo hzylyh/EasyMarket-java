@@ -52,7 +52,7 @@ public class UserTemplateServiceImpl implements UserTemplateService {
             userTemplateEntity.setTemplateId(templateId);
 //            userTemplateEntity.setTemplateInfo(jsonObject.getString("templateInfo"));
 //            userTemplateEntity.setTemplateName(jsonObject.getString("templateName"));
-//            userTemplateDao.saveUserTemplate(userTemplateEntity);
+            userTemplateDao.saveUserTemplate(userTemplateEntity);
 //            Map res = new HashMap();
 //            res.put("templateId", templateId);
 //            return res;
@@ -61,12 +61,11 @@ public class UserTemplateServiceImpl implements UserTemplateService {
             userTemplateEntity.setTemplateId(templateId);
 //            userTemplateEntity.setTemplateInfo(jsonObject.getString("templateInfo"));
 //            userTemplateEntity.setTemplateName(jsonObject.getString("templateName"));
-//            userTemplateDao.updateUserTemplate(userTemplateEntity);
+            userTemplateDao.updateUserTemplate(userTemplateEntity);
 //            Map res = new HashMap();
 //            res.put("templateId", templateId);
 //            return res;
         }
-        userTemplateDao.updateUserTemplate(userTemplateEntity);
         Map res = new HashMap();
         res.put("templateId", templateId);
         return res;
@@ -102,10 +101,11 @@ public class UserTemplateServiceImpl implements UserTemplateService {
     @Override
     public PageInfo<TemplateInfoVO> getTempList(JSONObject jsonObject) {
         String userId = jsonObject.getString("userId");
+        Boolean isPreview = jsonObject.getBoolean("isPreview");
         Integer pageNum = jsonObject.getInteger("pageNum");
         Integer pageSize = jsonObject.getInteger("pageSize");
         PageHelper.startPage(pageNum, pageSize);
-        List<TemplateInfoVO> templateInfoVOList = userTemplateDao.selectTempList(userId);
+        List<TemplateInfoVO> templateInfoVOList = userTemplateDao.selectTempList(userId, isPreview);
         PageInfo<TemplateInfoVO> result = new PageInfo<TemplateInfoVO>(templateInfoVOList);
         return result;
     }
